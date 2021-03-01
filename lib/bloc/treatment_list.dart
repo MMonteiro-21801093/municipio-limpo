@@ -24,6 +24,16 @@ class TreatmentListBloc{
     }
   }
 
+  void resolveIncident(incidentDate) {
+    List listIncident = db.getAll();
+    for(int i = 0; i < listIncident.length;i++){
+      if(listIncident[i].incidentDate == incidentDate){
+        listIncident[i].state ="R";
+        _input.add(db.getAll()) ;
+        break;
+      }
+  }
+  }
 
 
 

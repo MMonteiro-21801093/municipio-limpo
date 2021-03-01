@@ -1,6 +1,6 @@
 class Incident{
   String _incidentDate;
-  String _incidentTitle;
+  String _title;
   String _description;
   String _address;
   String _state="A";
@@ -12,7 +12,7 @@ class Incident{
 
   set state(String value) =>_state = value;
 
-  String get incidentTitle => _incidentTitle;
+  String get title => _title;
 
   String get state => _state;
 
@@ -24,7 +24,7 @@ class Incident{
 
   set description(String value)=>  _description = value;
 
-  set incidentTitle(String value) =>  _incidentTitle = value;
+  set title(String value) =>  _title = value;
 
 
 }

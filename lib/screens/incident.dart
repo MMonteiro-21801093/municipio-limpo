@@ -32,7 +32,7 @@ class IncidentScreen extends StatelessWidget{
                 stream: incidentBloc.output,
                 builder: (BuildContext context, snapshot) {
                   if ( _action == "E") {
-                    _titleController.text = snapshot.data.incidentTitle.toString();
+                    _titleController.text = snapshot.data.title.toString();
                     _descriptionController.text = snapshot.data.description.toString();
                     _addressController.text = snapshot.data.address.toString();
                   }
@@ -110,7 +110,7 @@ class IncidentScreen extends StatelessWidget{
                               if (_formKey.currentState.validate()) {
                                 if( _action=="N"){
                                   Incident incident = Incident();
-                                  incident.incidentTitle = _titleController.text;
+                                  incident.title = _titleController.text;
                                   incident.description = _descriptionController.text;
                                   incident.address = _addressController.text;
                                   var now = DateTime.now();
@@ -124,7 +124,7 @@ class IncidentScreen extends StatelessWidget{
                                 }
                                 if( _action=="E"){
                                   Incident incident =  snapshot.data;
-                                  incident.incidentTitle = _titleController.text ;
+                                  incident.title = _titleController.text ;
                                   incident.description = _descriptionController.text  ;
                                   incident.address =_addressController.text  ;
                                   incidentBloc.updateIncident(incident);
