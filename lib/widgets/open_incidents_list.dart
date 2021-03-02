@@ -50,7 +50,30 @@ class _OpenIncidentListState extends State<OpenIncidentList>  {
           itemBuilder: (context, index) {
             return Dismissible(
                 key: Key(snapshot.data[index].incidentDate),
-
+                confirmDismiss: (direction) async {
+                  if (snapshot.data[index].state=="Aberto") {
+                    Scaffold
+                        .of(context)
+                        .showSnackBar(
+                        SnackBar(
+                          content:
+                          Text(
+                              "Este incidente ainda não se encontra resolvido, por isso não pode transitar para a lista dos fechados"
+                              ),
+                        ));
+                    return false;
+                  } else  {
+                    Scaffold
+                        .of(context)
+                        .showSnackBar(
+                        SnackBar(
+                          content:
+                          Text(
+                              "O seu incidente foi dado como fechado"),
+                        ));
+                    return true;
+                  }
+                },
                 background: Container(
                   color: Colors.blueAccent,
                   child: Align(
@@ -60,25 +83,8 @@ class _OpenIncidentListState extends State<OpenIncidentList>  {
                 ),
                 direction: DismissDirection.startToEnd,//direçao do dismiss
                 onDismissed: (direction){
-                  if(snapshot.data[index].state=="Aberto"){
 
-                    setState(() {
-                     Incident incident = snapshot.data[index];
 
-                    snapshot.data.removeAt(index);
-                    treatmentListBloc.insertIncident(incident);
-                    Scaffold
-                        .of(context)
-                        .showSnackBar(
-                      SnackBar(
-                        content:
-                        Text(
-                            "O incidente selecionado não foi resolvido"),
-                      ),
-                    );
-                    });
-
-                  }else{
                     setState(() {
 
                     //  Incident incident = snapshot.data[index];
@@ -88,7 +94,7 @@ class _OpenIncidentListState extends State<OpenIncidentList>  {
 
 
                     });
-                  }
+
 
                 },
                 child:GestureDetector(

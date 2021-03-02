@@ -14,10 +14,6 @@ class DataBase{
 
   List getAll()=>_dataBase;
 
-  void clearAll() {
-    _dataBase.clear();
-  }
-
   void insertIncident( data)=>_dataBase.add(data);
 
   void deleteIncident(incident) {

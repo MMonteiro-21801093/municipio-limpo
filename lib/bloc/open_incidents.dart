@@ -30,7 +30,7 @@ class OpenIncidentsBloc{
     for(int i = 0; i < listIncident.length;i++){
       if(listIncident[i].incidentDate == incidentDate){
         db.deleteIncident(listIncident[i]);
-        _input.add(db.getAll()) ;
+        getOpenedIncidents();
         break;
       }
 
