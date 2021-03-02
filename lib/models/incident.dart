@@ -3,7 +3,7 @@ class Incident{
   String _title;
   String _description;
   String _address;
-  String _state="A";
+  String _state="Aberto";
   Incident();
 
   String get incidentDate => _incidentDate;

@@ -1,15 +1,15 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto_cm/bloc/treatment_list.dart';
-import 'package:projeto_cm/widgets/treatment_list.dart';
+import 'package:projeto_cm/widgets/closed_incidents_list.dart';
+import 'package:projeto_cm/widgets/open_incidents_list.dart';
+
 
 import 'incident.dart';
 
 class HomeScreen extends StatefulWidget {
   final String title;
   HomeScreen({Key key, this.title});
-
-
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -18,7 +18,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>  {
 
-  final treatmentListBloc = TreatmentListBloc();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -48,17 +47,18 @@ class _HomeScreenState extends State<HomeScreen>  {
           ),
           body: TabBarView(
             children: [
-              StreamBuilder(initialData:[],stream: treatmentListBloc.output, builder: (BuildContext context,snapshot) {
-                return TreatmentList(context,snapshot,treatmentListBloc);
-              }         ),
-              Icon(Icons.directions_transit),
+
+              OpenIncidentList(),
+              ClosedIncidentsList(),
             ],
           ),
           floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
             onPressed: (){
+
               Navigator.push(
                   context,MaterialPageRoute(builder: (context)=>IncidentScreen("N"))
+
               );
             },
           ),
@@ -70,6 +70,5 @@ class _HomeScreenState extends State<HomeScreen>  {
 
 
 }
-
 
 

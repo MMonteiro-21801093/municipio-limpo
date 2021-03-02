@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:projeto_cm/bloc/treatment_list.dart';
+import 'package:projeto_cm/bloc/open_incidents.dart';
 
 import 'delete_message.dart';
 
-DeleteConfirmation(BuildContext context, TreatmentListBloc treatmentListBloc, incidentDate )
+DeleteConfirmation(BuildContext context, OpenIncidentsBloc treatmentListBloc, incidentDate )
 {
 
 

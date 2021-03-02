@@ -20,7 +20,7 @@ class DataBase{
 
   void insertIncident( data)=>_dataBase.add(data);
 
-  void deleteIncidente(incident) {
+  void deleteIncident(incident) {
     _dataBase.remove(incident);
   }
 

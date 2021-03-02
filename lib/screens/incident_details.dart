@@ -46,6 +46,14 @@ class IncidentDetailsScreen extends StatelessWidget {
                   ColumnDetails(snapshot.data.incidentDate, "Data do registo"),
                   ColumnDetails(snapshot.data.description, "Descrição"),
                   ColumnDetails(snapshot.data.address, "Morada"),
+                  Text(
+                    snapshot.data.state,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: snapshot.data.state == "Aberto" ? Colors.blueAccent : snapshot.data.state =="Resolvido" ? Colors.orangeAccent : Colors.redAccent,
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ],
               );
             }),
