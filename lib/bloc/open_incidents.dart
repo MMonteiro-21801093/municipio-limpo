@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:projeto_cm/data/database.dart';
 
@@ -14,63 +15,52 @@ class OpenIncidentsBloc{
   }
   void getOpenedIncidents(){
     List listIncident = db.getAll()  ;
-    List outPutList= List() ;
-    if(listIncident.length> 0){
-      for(int i = 0; i < listIncident.length;i++){
-        if( listIncident[i].state != "Fechado"  ){
-          outPutList.add(listIncident[i]);
-        }
-      }
-
-    }
+    List outPutList =  listIncident.where((i) => i.state !="Fechado").toList();
     _input.add(outPutList);
 }
   void deleteIncident(incidentDate) {
     List listIncident = db.getAll();
-    for(int i = 0; i < listIncident.length;i++){
-      if(listIncident[i].incidentDate == incidentDate){
+    for(int i = 0;i<listIncident.length;i++){
+      if(listIncident[i].incidentDate == incidentDate ){
         db.deleteIncident(listIncident[i]);
-        getOpenedIncidents();
         break;
       }
-
     }
+    getOpenedIncidents();
   }
 
-  void solveIncident(incidentDate) {
+  void solveIncident() {
+    var random = new Random();
     List listIncident = db.getAll();
-    //for(int i = 0; i < listIncident.length;i++){
-    // if(listIncident[i].incidentDate == incidentDate && listIncident[i].state == "Aberto"){
-    //   listIncident[i].state ="Resolvido";
-    //    _input.add(db.getAll()) ;
-    //    break;
-    // }
-  //}
+    bool resolved = false;
 
-    listIncident.forEach( (incident) {
+    do{
+      int index = random.nextInt(listIncident.length);
+      if(listIncident[index].state =="Aberto"){
+        listIncident[index].state ="Resolvido";
+        resolved= true;
+      }
+    }while(resolved==false);
+    _input.add(db.getAll());
+   /* listIncident.forEach( (incident) {
       if(incident.incidentDate == incidentDate && incident.state =="Aberto"){
         incident.state ="Resolvido";
         _input.add(db.getAll()) ;
       }
-    });
+    });*/
 
   }
 
   void closeIncident(incidentDate) {
-  //  db.updateDataBase(data);
     List listIncident = db.getAll();
-    for(int i = 0; i < listIncident.length;i++){
-      if(listIncident[i].incidentDate == incidentDate && listIncident[i].state == "Resolvido"){
-        listIncident[i].state ="Fechado";
+    listIncident.forEach( (incident) {
+      if(incident.incidentDate == incidentDate && incident.state == "Resolvido"){
+        incident.state ="Fechado";
         getOpenedIncidents();
-        break;
       }
-    }
-
-
+    });
   }
   void insertIncident( data){
-
     db.updateDataBase(data);
     getOpenedIncidents();
   }

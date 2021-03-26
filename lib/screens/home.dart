@@ -24,7 +24,9 @@ class _HomeScreenState extends State<HomeScreen>  {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: Text('Municipio Limpo'),
+            title: new Center(
+                child: Text(widget.title, textAlign: TextAlign.center)
+            ),
             bottom: TabBar(
               tabs: [
                 Tab(

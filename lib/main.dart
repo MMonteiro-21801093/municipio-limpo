@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:projeto_cm/screens/home.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(App());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class App extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      //title: 'Município Limpo',
       theme: ThemeData(
 
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
       ),
-      home: HomeScreen(),
+      home: HomeScreen( title:'Município Limpo'),
     );
   }
 }

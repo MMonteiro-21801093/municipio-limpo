@@ -15,21 +15,28 @@ class ColumnDetails extends StatelessWidget {
      mainAxisAlignment: MainAxisAlignment.start,
      children: [
        Container(
-         margin: EdgeInsets.only(left: 0, top: 20, bottom: 5),
+         margin: EdgeInsets.only(left: 0, top: 5, bottom: 2 ),
          child: Text(labelText,
              textAlign: TextAlign.left,
              style: TextStyle(
-                 color: Colors.grey,
+                 color: Colors.blueGrey,
                  // fontWeight: FontWeight.bold,
                  fontSize: 20)),
        ),
-       Text(text,
-           textAlign: TextAlign.left,
-           style: TextStyle(color: Colors.black, fontSize: 20)),
-       Divider(
-         color: Colors.black,
-         height: 20,
-       ),
+
+           Text(text,
+          textAlign: TextAlign.left,
+          style: TextStyle(color: Colors.black,
+              fontSize: 20)),
+
+        Container(
+          margin: EdgeInsets.only(left: 0, top: 2, bottom: 0 ),
+        child:  Divider(
+            color: Colors.blueGrey,
+            height: 10,
+          ),
+        ),
+
 
      ],
    );

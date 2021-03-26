@@ -14,14 +14,12 @@ class IncidentDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-      //    MaterialPageRoute(
-      //     builder: (context) => IncidentDetailsScreen(incidentDate)));
     incidentBloc.loadIncident(incidentKey);
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title: Text("Municipio Limpo"),
+        backgroundColor: Colors.blueGrey,
+        title: Text("Município Limpo"),
         centerTitle: true,
       ),
       body: Container(
@@ -35,25 +33,20 @@ class IncidentDetailsScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Text(
-                    'Consulta de Incidentes',
+                    'Detalhe do Incidente',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Colors.blueAccent,
+                        color:( Colors.blueGrey),
                         fontSize: 30.0,
                         fontWeight: FontWeight.bold),
                   ),
-                  ColumnDetails(snapshot.data.title, "Titulo"),
-                  ColumnDetails(snapshot.data.incidentDate, "Data do registo"),
-                  ColumnDetails(snapshot.data.description, "Descrição"),
-                  ColumnDetails(snapshot.data.address, "Morada"),
-                  Text(
-                    snapshot.data.state,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: snapshot.data.state == "Aberto" ? Colors.blueAccent : snapshot.data.state =="Resolvido" ? Colors.orangeAccent : Colors.redAccent,
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold),
-                  ),
+                   snapshot.data.image!=null ? Image.file(snapshot.data.image, fit: BoxFit.cover, height:200,width: 200.0): new Container(),
+                  ColumnDetails(snapshot.data.title, "Titulo:"),
+                  ColumnDetails(snapshot.data.incidentDate, "Data do registo:"),
+                  ColumnDetails(snapshot.data.description, "Descrição:"),
+                  ColumnDetails(snapshot.data.address, "Morada:"),
+                  ColumnDetails(snapshot.data.state, "Estado:"),
+
                 ],
               );
             }),

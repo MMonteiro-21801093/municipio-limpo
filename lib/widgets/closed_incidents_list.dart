@@ -22,8 +22,6 @@ class _ClosedIncidentsListState extends State<ClosedIncidentsList> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-
     return   StreamBuilder(initialData:[],stream: closedIncidentsBloc.output, builder: (BuildContext context,snapshot){
       return BuildList(context,snapshot,closedIncidentsBloc);
     });
@@ -38,7 +36,7 @@ class _ClosedIncidentsListState extends State<ClosedIncidentsList> {
           itemBuilder: (context, index) {
             return  Card(
                     shadowColor: Colors.black,
-                    color:Colors.white70,
+                    color:Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -52,8 +50,8 @@ class _ClosedIncidentsListState extends State<ClosedIncidentsList> {
                           Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
                             IconButton(
                               icon: Icon(
-                                Icons.book,
-                                color: Colors.blueAccent,
+                                Icons.remove_red_eye,
+                                color: Colors.blueGrey,
                               ),
                               onPressed: () {
                                 Navigator.push(
@@ -62,9 +60,6 @@ class _ClosedIncidentsListState extends State<ClosedIncidentsList> {
                                         builder: (context) => IncidentDetailsScreen(snapshot.data[index].incidentDate)));
                               },
                             ),
-
-
-
                           ]),
                         ),
                       ],

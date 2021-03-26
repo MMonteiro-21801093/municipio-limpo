@@ -3,29 +3,41 @@ import 'package:flutter/material.dart';
 
 UpdateMessage(BuildContext context,String action)
 {
-  String message ="";
+  String message;
   if(action =="N"){
     message = "submetido";
   }else{
     message = "editado";
   }
-  // configura o button
+
   Widget okButton = FlatButton(
-    child: Text("OK"),
+    child: Text("OK",
+        style: TextStyle(
+      color: Colors.blueGrey,fontSize: 15,
+      // fontWeight: FontWeight.bold,
+    )),
     onPressed: () {
-      Navigator.of(context).pop(); // dismiss dialog
+      Navigator.of(context).pop();
     },
   );
-  // configura o  AlertDialog
-  AlertDialog alerta = AlertDialog(
-    title: Text("Incidente"),
 
-    content: Text("O seu incidente foi $message com sucesso"),
+  AlertDialog alerta = AlertDialog(
+    title: Text("Gestão de Incidentes",
+      style: TextStyle(
+        color: Colors.blueGrey,)
+    ),
+
+    content: Text("O seu incidente foi $message com sucesso",
+        style: TextStyle(
+            color: Colors.black,
+            // fontWeight: FontWeight.bold,
+           )
+    ),
     actions: [
       okButton,
     ],
   );
-  // exibe o dialog
+
   showDialog(
     context: context,
     builder: (BuildContext context) {
